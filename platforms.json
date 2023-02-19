@@ -1,0 +1,17 @@
+{
+    "Testing": {
+        "platform_name_suggestion": "Try playing a game outside instead of playing Steam games.",
+        "available_games": {
+            "Testing": {
+                "suggestion": "Why not go for a walk in the park instead of playing Don't Starve Together?",
+                "game_location": "D:\\Personal\\Coding\\dotNet\\Portal_Gaming_Hub_Python\\test.txt",
+                "last_played": 1676827442.9226286
+            },
+            "Testing2": {
+                "suggestion": "Why not go for a walk in the park instead of playing Don't Starve Together?",
+                "game_location": "D:\\Personal\\Coding\\dotNet\\Portal_Gaming_Hub_Python\\test.txt",
+                "last_played": 1676827442.9226286
+            }
+        }
+    }
+}
