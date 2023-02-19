@@ -6,7 +6,7 @@
 4. [For the program to work correctly](#for-the-program-to-work-correctly)
 5. [Requirements](#requirements)
 6. [Configuration](#configuration)
-7. [Contributors](#contributors-✨)
+7. [Contributors](#contributors-)
 8. [Usage](#usage)
 9. [Support](#support)
 10. [License](#license)
