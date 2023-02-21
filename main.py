@@ -4,9 +4,17 @@ import random
 import datetime
 import os
 import platform
+import debug
+
+debugEnv = debug.debugEnvironment
+debugJSONLocation = debug.testingPlatforms
+if(debugJSONLocation):
+    platformsJsonLocation = "debugPlatforms.json"
+else:
+    platformsJsonLocation = "platforms.json"
 
 if platform.system() == 'Windows':
-    os.system('color') # enable color support on Windows command prompt
+    os.system('color')
 
 def main_menu():
     os.system('cls') # clear console
@@ -38,8 +46,7 @@ def games_menu(games):
             last_played = game_data["last_played"]
             global last_played_old
             last_played_old = game_data["last_played"]
-            last_played_formatted = time.strftime("%H:%M:%S - %d/%m/%Y", time.localtime(last_played))
-            time_difference = datetime.timedelta(seconds=int(time.time() - last_played))
+            time_difference = datetime.timedelta(seconds=float(time.time() - last_played))
             time_difference_formatted = ""
             if time_difference.days > 0:
                 time_difference_formatted += f"\033[1;36m{time_difference.days}\033[0m \033[3;36mdays, "
@@ -51,24 +58,85 @@ def games_menu(games):
                 time_difference_formatted += f"\033[1;36m{minutes}\033[0m \033[3;36mminutes, "
             seconds = time_difference.seconds % 60
             time_difference_formatted += f"\033[1;36m{seconds}\033[0m \033[3;36mseconds ago"
-        print("\033[1;34m     " + game_name + "\033[0m \033[1;32m-\033[0m " + f"{time_difference_formatted}" + "\033[0m") # print in blue
+        print("\033[1;34m     " + game_name + "\033[0m \033[1;32m-\033[0m " + f"{time_difference_formatted}" + "\033[0m")
     game_choice = input("\n \033[7;32m Game choice: \033[0m ")
     if game_choice == "back to menu":
         return
     if game_choice in games:
         game = games[game_choice]
-        #print(f"Time current: ",int(time.time()))
-        #print(f"Last played: ",int(last_played_old))
-        #print(f"Diference: ",int(time.time() - last_played_old))
         global random_number
 
+        def extract_time(diff):
+            days, seconds = divmod(diff, 86400)
+            hours, seconds = divmod(seconds, 3600)
+            minutes, seconds = divmod(seconds, 60)
+            hours += days * 24
+            return days, hours, minutes, seconds
+
         def generate_number():
+            
             diff = int(time.time() - last_played_old)
+            days, hours, minutes, seconds = extract_time(diff)
+            if(debugEnv):
+                messageDebug = f"(debug): {hours} hours have passed"
+                print(messageDebug)
             global minLimit
             global maxLimit
-            minLimit = random.randint(10000 + diff, 100000 + diff)
-            maxLimit = random.randint(100000 + diff, 1000000 + diff)
+            if(hours > 72):
+                minToAdd = 1
+                maxToAdd = 5
+            elif(hours > 56):
+                minToAdd = 1
+                maxToAdd = 10
+            elif(hours > 48):
+                minToAdd = 10
+                maxToAdd = 100
+            elif(hours > 36):
+                minToAdd = 100
+                maxToAdd = 1000
+            elif(hours > 24):
+                minToAdd = 1000
+                maxToAdd = 10000
+            elif(hours > 18):
+                minToAdd = 10000
+                maxToAdd = 90000
+            elif(hours > 12):
+                minToAdd = 600000
+                maxToAdd = 900000
+            elif(hours > 8):
+                minToAdd = 500000
+                maxToAdd = 900000
+            elif(hours > 6):
+                minToAdd = 100000
+                maxToAdd = 350000
+            elif(hours >= 3):
+                minToAdd = 1000000
+                maxToAdd = 35000000
+            elif(hours >= 1):
+                minToAdd = 5000000
+                maxToAdd = 10000000
+            else:
+                minToAdd = 5000000
+                maxToAdd = 50000000
+            minLimit = random.randint(minToAdd, maxToAdd)
+            maxLimit = random.randint(minToAdd + hours, maxToAdd + hours)
+            if(minLimit > maxLimit):
+                minLimit, maxLimit = maxLimit, minLimit
+                if(debugEnv):
+                    print(f"(debug): Swapping between minLimit({minLimit}) and maxLimit({maxLimit}) was necessary")
+
+            elif(minLimit == maxLimit):
+                minLimit -= 3
+                if(debugEnv):
+                    print(f"(debug): The value of minLimit({minLimit}) was decreased by 3, maxLimit({maxLimit})")
+            if(debugEnv):
+                print(f"(debug): minToAdd = {minToAdd}")
+                print(f"(debug): maxToAdd = {maxToAdd}")
+                print(f"(debug): minLimit = {minLimit}")
+                print(f"(debug): maxLimit = {maxLimit}")
             random_number = random.randint(minLimit, maxLimit)
+            if(debugEnv):
+                print(f"(debug): random_number = {random_number}")
             return random_number
         random_number = int(generate_number())
         while True:
@@ -97,7 +165,7 @@ def games_menu(games):
                 print("\n\033[1;32mLaunching \033[0m\033[1;34m"+game_choice+"\033[0m\033[1;32m in\033[1;32m")
                 countdown(10)
                 game["last_played"] = time.time()
-                with open("platforms.json", "w") as f:
+                with open(platformsJsonLocation, "w") as f:
                     json.dump(platforms, f, indent=4)
                 os.startfile(game["game_location"])
                 break
@@ -121,7 +189,7 @@ def countdownMiniGame(seconds):
     time.sleep(1)
     os.system('cls')
 
-with open("platforms.json") as f:
+with open(platformsJsonLocation) as f:
     platforms = json.load(f)
 
 while True:

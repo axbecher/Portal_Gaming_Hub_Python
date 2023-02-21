@@ -1,0 +1,77 @@
+{
+    "[debug purpose] Steam": {
+        "platform_name_suggestion": "Try playing a game outside instead of playing Steam games.",
+        "available_games": {
+            "Snow Runner": {
+                "suggestion": "Why not go for a walk in the park instead of playing Snow Runner?",
+                "game_location": "D:\\Personal\\Coding\\Python\\PortalGamingHubTerminal\\gamesSteam\\SnowRunner.url",
+                "last_played": 1676995465.7228482
+            },
+            "Wreckfest": {
+                "suggestion": "Why not go for a walk in the park instead of playing Wreckfest?",
+                "game_location": "D:\\Personal\\Coding\\Python\\PortalGamingHubTerminal\\gamesSteam\\Wreckfest.url",
+                "last_played": 1676804400
+            },
+            "Company of Heroes 2": {
+                "suggestion": "Why not go for a walk in the park instead of playing Company of Heroes 2?",
+                "game_location": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Company of Heroes 2\\RelicCoH2.exe",
+                "last_played": 1676804400
+            },
+            "Counter Strike: Global Offensive": {
+                "suggestion": "Why not go for a walk in the park instead of playing Counter Strike:Global Offensive?",
+                "game_location": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
+                "last_played": 1676804400
+            },
+            "A Way Out": {
+                "suggestion": "Why not go for a walk in the park instead of playing A Way Out?",
+                "game_location": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\AWayOut\\Haze1\\Binaries\\Win64\\AWayOut.exe",
+                "last_played": 1676804400
+            },
+            "Don't Starve Together": {
+                "suggestion": "Why not go for a walk in the park instead of playing Don't Starve Together?",
+                "game_location": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Don't Starve Together\\bin\\dontstarve_steam.exe",
+                "last_played": 1676969089.9320586
+            }
+        }
+    },
+    "Ubisoft Connect": {
+        "platform_name_suggestion": "Consider taking a break from playing video games and doing something else.",
+        "available_games": {
+            "Watch Dogs Legion": {
+                "suggestion": "Maybe try reading a book or going for a walk instead of playing Watch Dogs Legion.",
+                "game_location": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Watch Dogs Legion\bin\\WatchDogsLegion.exe",
+                "last_played": 1676747716
+            }
+        }
+    },
+    "Riot Games": {
+        "platform_name_suggestion": "Think about doing some exercise or spending time with friends instead of playing video games.",
+        "available_games": {
+            "League of Legends": {
+                "suggestion": "Why not go outside and play some sports with friends instead of playing League of Legends?",
+                "game_location": "C:\\Riot Games\\League of Legends\\LeagueClient.exe",
+                "last_played": 1676988365.2715552
+            }
+        }
+    },
+    "Wargaming": {
+        "platform_name_suggestion": "Take a break from video games and try doing something creative, like painting or writing.",
+        "available_games": {
+            "World of Tanks": {
+                "suggestion": "Instead of playing World of Tanks, consider going for a hike or trying a new hobby.",
+                "game_location": "C:\\Games\\World_of_Tanks_EU\\wgc_api.exe",
+                "last_played": 1676922558.4002578
+            }
+        }
+    },
+    "Battlenet": {
+        "platform_name_suggestion": "Think about taking a break from video games and doing something more active, like hiking or biking.",
+        "available_games": {
+            "Call of Duty Modern Warfare 2": {
+                "suggestion": "Why not go to the gym or go for a run instead of playing Call of Duty Modern Warfare 2?",
+                "game_location": "C:\\Program Files (x86)\\Call of Duty\\Call of Duty Launcher.exe",
+                "last_played": 1676804400
+            }
+        }
+    }
+}
